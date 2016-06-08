@@ -5,6 +5,6 @@ package com.mea.happyclients.messages;
  */
 public class TextMessage implements Message {
 
-    public MessageType getType() { return MessageType.TEXT; }
+    public MessageType getMessageType() { return MessageType.TEXT; }
 
 }
