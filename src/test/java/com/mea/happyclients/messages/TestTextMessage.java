@@ -18,7 +18,7 @@ public class TestTextMessage {
 
     @Test
     public void testMessageType() {
-        assertEquals(MessageType.TEXT, message.getMessageType());
+        assertEquals(MessageTypes.TEXT, message.getMessageType());
     }
 
 }
