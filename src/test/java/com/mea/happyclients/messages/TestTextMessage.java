@@ -4,9 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Created by markmicallef on 08/06/2016.
- */
 public class TestTextMessage {
 
     TextMessage message;

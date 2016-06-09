@@ -1,10 +1,14 @@
 package com.mea.happyclients.channels;
 
+import com.mea.happyclients.messages.Message;
+
 /**
- * Created by markmicallef on 08/06/2016.
+ * Encapsulates the notion of a channel over which messages can be sent.
  */
 public interface Channel {
 
-    public void sendMessage();
+    ChannelTypes getChannelType();
+
+    void sendMessage(Message message);
 
 }
