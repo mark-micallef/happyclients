@@ -4,16 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Created by markmicallef on 09/06/2016.
- */
+
 public class TestFifoQueue {
 
     FifoQueue queue;
+    String queueName = "my-queue";
 
     @Before
     public void setUp() {
-        queue = new FifoQueue();
+        queue = new FifoQueue(queueName);
     }
 
     @Test

@@ -8,10 +8,12 @@ import static org.junit.Assert.*;
 public class TestClient {
 
     Client client;
+    String clientName = "John Doe";
+    String clientMobileNumber = "356123456";
 
     @Before
     public void setUp() {
-        client = new Client();
+        client = new Client(clientName, clientMobileNumber);
     }
 
     @Test

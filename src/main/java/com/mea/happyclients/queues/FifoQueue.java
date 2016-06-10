@@ -11,8 +11,10 @@ import java.util.List;
 public class FifoQueue implements Queue {
 
     List<Client> clients;
+    String name;
 
-    public FifoQueue() {
+    public FifoQueue(String name) {
+        this.name = name;
         clients = new ArrayList<>();
     }
 
@@ -31,6 +33,10 @@ public class FifoQueue implements Queue {
         }
 
         return client;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

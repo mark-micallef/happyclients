@@ -1,5 +1,6 @@
 package com.mea.happyclients.users;
 
+import com.mea.happyclients.queues.FifoQueue;
 import com.mea.happyclients.queues.Queue;
 
 import java.util.HashMap;
@@ -40,6 +41,10 @@ public class User {
 
     public Queue getQueueByName(String queueName) {
         return queues.get(queueName);
+    }
+
+    public void addQueue(String queueName) {
+        queues.put(queueName, new FifoQueue(queueName));
     }
 
 }

@@ -15,7 +15,7 @@ public class UserDB {
         users = new HashMap<>();
     }
 
-    public void addClient(User user) {
+    public void addUser(User user) {
         users.put(user.getId(), user);
     }
 

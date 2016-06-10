@@ -13,6 +13,11 @@ public class Client {
     protected String name;
     protected String mobileNumber;
 
+    public Client(String name, String mobileNumber) {
+        this.name = name;
+        this.mobileNumber = mobileNumber;
+    }
+
     public String getName() {
         return name;
     }
@@ -27,6 +32,10 @@ public class Client {
 
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
+    }
+
+    public String toString() {
+        return name;
     }
 
 }

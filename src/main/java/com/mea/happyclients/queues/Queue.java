@@ -17,4 +17,6 @@ public interface Queue {
 
     List<Client> getOrderedListofClients();
 
+    String getName();
+
 }

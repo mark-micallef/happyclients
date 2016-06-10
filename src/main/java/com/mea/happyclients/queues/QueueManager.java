@@ -28,9 +28,14 @@ public class QueueManager {
             System.out.println(clients.get(i) + " is now in position " + i + " on the queue");
         }
 
+        System.out.println("----------");
+
         //Remove first client from the queue
         queue.getNextClient();
+    }
 
+    public void addClientToQueue(String userID, String queueName, Client client) {
+        userDB.getUserByID(userID).getQueueByName(queueName).addClient(client);
     }
 
 }
