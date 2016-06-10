@@ -1,10 +1,20 @@
 package com.mea.happyclients.queues;
 
+import com.mea.happyclients.clients.Client;
+
+import java.util.List;
+
 /**
- * Created by markmicallef on 09/06/2016.
+ * Symbolises the abstract notion of a queue.
  */
 public interface Queue {
 
-    public QueueTypes getType();
+    QueueTypes getType();
+
+    Client getNextClient();
+
+    void addClient(Client client);
+
+    List<Client> getOrderedListofClients();
 
 }

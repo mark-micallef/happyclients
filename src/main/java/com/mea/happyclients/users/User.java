@@ -34,4 +34,12 @@ public class User {
         this.name = name;
     }
 
+    public HashMap<String, Queue> getQueues() {
+        return queues;
+    }
+
+    public Queue getQueueByName(String queueName) {
+        return queues.get(queueName);
+    }
+
 }
