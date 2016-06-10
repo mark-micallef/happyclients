@@ -40,6 +40,11 @@ public class FifoQueue implements Queue {
     }
 
     @Override
+    public int getSize() {
+        return clients.size();
+    }
+
+    @Override
     public void addClient(Client client) {
         clients.add(client);
     }
