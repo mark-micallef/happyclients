@@ -51,4 +51,16 @@ public class TestQueueManager {
         assertEquals(2, user1.getQueueByName("Barber 1").getSize());
         assertEquals(5, user1.getQueueByName("Barber 2").getSize());
     }
+
+    @Test
+    public void testAdvanceQueue() {
+        populateQueues();
+
+        queueManager.advanceQueue(user1.getId(), "Barber 1");
+        queueManager.advanceQueue(user1.getId(), "Barber 2");
+        queueManager.advanceQueue(user1.getId(), "Barber 2");
+
+        assertEquals(1, user1.getQueueByName("Barber 1").getSize());
+        assertEquals(3, user1.getQueueByName("Barber 2").getSize());
+    }
 }
