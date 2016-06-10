@@ -13,11 +13,18 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.4</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.4.9</version>
         </dependency>
     </dependencies>
 
@@ -28,8 +35,8 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.5.5.201112152213</version>
                 <configuration>
-                    <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
-                    <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+                    <destFile>${basedir}/target/coverage-reports/jacoco-unitdest.exec</destFile>
+                    <dataFile>${basedir}/target/coverage-reports/jacoco-unitdata.exec</dataFile>
                 </configuration>
                 <executions>
                     <execution>
