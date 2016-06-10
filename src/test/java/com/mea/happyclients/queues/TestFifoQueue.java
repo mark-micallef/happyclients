@@ -4,6 +4,8 @@ import com.mea.happyclients.clients.Client;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -60,6 +62,24 @@ public class TestFifoQueue {
     public void testNextClientOnEmptyQueue() {
         assertEquals(null, queue.getNextClient());
         assertEquals(0, queue.getSize());
+    }
+
+    @Test
+    public void testGetOrderedListofClients() {
+        Client client1 = new Client("John Doe", "35612341234");
+        Client client2 = new Client("Jane Doe", "35612341234");
+        Client client3 = new Client("Jimmy Doe", "35612341234");
+
+        queue.addClient(client1);
+        queue.addClient(client2);
+        queue.addClient(client3);
+
+        List<Client> list = queue.getOrderedListofClients();
+        assertEquals(client1, list.get(0));
+        assertEquals(client2, list.get(1));
+        assertEquals(client3, list.get(2));
+
+        assertEquals(3, list.size());
     }
 
 
