@@ -6,6 +6,7 @@ package com.mea.happyclients.clients;
 public class Client {
 
     protected String name;
+    protected String mobileNumber;
 
     public String getName() {
         return name;
@@ -13,5 +14,13 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 }

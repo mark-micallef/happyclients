@@ -1,5 +1,6 @@
 package com.mea.happyclients.channels;
 
+import com.mea.happyclients.clients.Client;
 import com.mea.happyclients.messages.Message;
 
 /**
@@ -11,7 +12,7 @@ public class SMSChannel implements Channel {
         return ChannelTypes.SMS;
     }
 
-    public void sendMessage(Message message) {
+    public void sendMessage(Client client, Message message) {
 
     }
 }

@@ -1,5 +1,6 @@
 package com.mea.happyclients.channels;
 
+import com.mea.happyclients.clients.Client;
 import com.mea.happyclients.messages.Message;
 
 /**
@@ -9,6 +10,6 @@ public interface Channel {
 
     ChannelTypes getChannelType();
 
-    void sendMessage(Message message);
+    void sendMessage(Client client, Message message);
 
 }
