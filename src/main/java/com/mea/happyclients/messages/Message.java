@@ -1,8 +1,12 @@
 package com.mea.happyclients.messages;
 
 /**
- * Created by markmicallef on 08/06/2016.
+ * This interface provides methods with all messages should implement.
  */
 public interface Message {
-    public MessageTypes getMessageType();
+
+    MessageTypes getMessageType();
+
+    String getMessageText();
+
 }
