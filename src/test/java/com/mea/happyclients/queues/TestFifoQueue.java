@@ -82,5 +82,4 @@ public class TestFifoQueue {
         assertEquals(3, list.size());
     }
 
-
 }
