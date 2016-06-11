@@ -6,6 +6,9 @@ import com.mea.happyclients.messages.MessageCreator;
 import com.mea.happyclients.messages.TextMessage;
 import com.mea.happyclients.users.User;
 import com.mea.happyclients.users.UserDB;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 
 import java.util.List;
 
@@ -18,8 +21,19 @@ public class QueueManager {
 
     UserDB userDB;
 
+    //Messaging infrastructure
+    /*ConnectionFactory connectionFactory;
+    Connection connection;
+    Channel channel;*/
+
     public QueueManager(UserDB userDB) {
         this.userDB = userDB;
+
+        //Initialise messaging infrastructure
+        /*connectionFactory = new ConnectionFactory();
+        connectionFactory.setHost("localhost");
+        connection = connectionFactory.newConnection();
+        channel = connectionFactory.createChannel();*/
     }
 
     public void advanceQueue(String userID, String queueName) {
@@ -35,8 +49,6 @@ public class QueueManager {
 
 
         }
-
-        System.out.println("----------");
 
         //Remove first client from the queue
         queue.getNextClient();
