@@ -3,6 +3,7 @@ package com.mea.happyclients.queues;
 import com.mea.happyclients.clients.Client;
 import com.mea.happyclients.messages.Message;
 import com.mea.happyclients.messages.MessageCreator;
+import com.mea.happyclients.messages.TextMessage;
 import com.mea.happyclients.users.User;
 import com.mea.happyclients.users.UserDB;
 
@@ -29,7 +30,10 @@ public class QueueManager {
         MessageCreator messageCreator = new MessageCreator();
 
         for (Client client : clients) {
-            System.out.println(messageCreator.createMessage(user, client, queue));
+            String messageText = messageCreator.createMessage(user, client, queue);
+            TextMessage message = new TextMessage(user, client, messageText);
+
+
         }
 
         System.out.println("----------");
