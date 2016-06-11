@@ -17,6 +17,8 @@ public interface Queue {
 
     List<Client> getOrderedListofClients();
 
+    int getClientPositionInQueue(Client client);
+
     String getName();
 
     int getSize();

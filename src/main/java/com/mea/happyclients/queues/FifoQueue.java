@@ -53,4 +53,9 @@ public class FifoQueue implements Queue {
     public List<Client> getOrderedListofClients() {
         return clients;
     }
+
+    @Override
+    public int getClientPositionInQueue(Client client) {
+        return clients.indexOf(client);
+    }
 }

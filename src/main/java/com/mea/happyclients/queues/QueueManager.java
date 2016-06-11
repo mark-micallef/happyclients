@@ -1,6 +1,8 @@
 package com.mea.happyclients.queues;
 
 import com.mea.happyclients.clients.Client;
+import com.mea.happyclients.messages.Message;
+import com.mea.happyclients.messages.MessageCreator;
 import com.mea.happyclients.users.User;
 import com.mea.happyclients.users.UserDB;
 
@@ -24,8 +26,10 @@ public class QueueManager {
         Queue queue = user.getQueueByName(queueName);
         List<Client> clients = queue.getOrderedListofClients();
 
-        for (int i = 0; i < clients.size(); i++) {
-            System.out.println(clients.get(i) + " is now in position " + i + " on the queue");
+        MessageCreator messageCreator = new MessageCreator();
+
+        for (Client client : clients) {
+            System.out.println(messageCreator.createMessage(user, client, queue));
         }
 
         System.out.println("----------");
