@@ -46,8 +46,8 @@ public class QueueManager {
 
         for (Client client : clients) {
             String messageText = messageCreator.createMessage(user, client, queue);
-            TextMessage message = new TextMessage(client.getMobileNumber(), messageText);
-            msgInfrastructure.getInstance().sendTextMessage(message);
+            TextMessage message = new TextMessage(user.getName(), client.getMobileNumber(), messageText);
+            msgInfrastructure.sendTextMessage(message);
         }
 
         //Remove first client from the queue

@@ -28,6 +28,10 @@ public class User {
         return name;
     }
 
+    public String getSenderID() {
+        return name.replace(" ", "");
+    }
+
     public String getId() {
         return id;
     }
