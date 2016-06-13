@@ -65,8 +65,8 @@ public class MessagingInfrastructure {
                 TextMessage message = (TextMessage) SerializationUtils.deserialize(body);
                 TargletsProvider provider = new TargletsProvider();
                 if (!message.getMobileNumber().equals(Config.MESSAGING_SHUTDOWN_CMD)) {
-                    //System.out.println(" [x] I was asked to send a message to " + message.getMobileNumber() + " (" + message.getMessageText() + ")");
                     if (!message.getMobileNumber().equals(Config.MESSAGING_CMD_IGNORE)) {
+                        System.out.println(" [x] I was asked to send a message to " + message.getMobileNumber() + " (" + message.getMessageText() + ")");
                         provider.sendMessage(message);
                     }
                 } else {

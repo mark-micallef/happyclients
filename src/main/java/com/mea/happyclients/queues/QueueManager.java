@@ -46,7 +46,7 @@ public class QueueManager {
 
         for (Client client : clients) {
             String messageText = messageCreator.createMessage(user, client, queue);
-            TextMessage message = new TextMessage(user.getName(), client.getMobileNumber(), messageText);
+            TextMessage message = new TextMessage(user.getSenderID(), client.getMobileNumber(), messageText);
             msgInfrastructure.sendTextMessage(message);
         }
 
@@ -54,8 +54,16 @@ public class QueueManager {
         queue.getNextClient();
     }
 
-    public void addClientToQueue(String userID, String queueName, Client client) {
-        userDB.getUserByID(userID).getQueueByName(queueName).addClient(client);
+    public void addClientToQueue(MessagingInfrastructure msgInfrastructure, User user, String queueName, Client client) {
+
+        //Add user to queue
+        user.getQueueByName(queueName).addClient(client);
+
+        //Send text message
+        MessageCreator messageCreator = new MessageCreator();
+        String messageText = messageCreator.createMessage(user, client, user.getQueueByName(queueName));
+        TextMessage message = new TextMessage(user.getSenderID(), client.getMobileNumber(), messageText);
+        msgInfrastructure.sendTextMessage(message);
     }
 
 }

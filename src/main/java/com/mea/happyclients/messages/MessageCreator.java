@@ -14,9 +14,9 @@ public class MessageCreator {
     public static final String VAR_POS_IN_QUEUE = "%POS_IN_QUEUE%";
 
     public static final String DEFAULT_MESSAGE = "Dear " + VAR_CLIENT_NAME + ", you are now number "
-            + VAR_POS_IN_QUEUE + "in the queue at " + VAR_USER_NAME + ".";
+            + VAR_POS_IN_QUEUE + " in the queue at " + VAR_USER_NAME + ".";
 
-    public static final String DEFAULT_MESSAGE_YOUR_TURN = "Dear " + VAR_CLIENT_NAME + ", it is your turn to be server "
+    public static final String DEFAULT_MESSAGE_YOUR_TURN = "Dear " + VAR_CLIENT_NAME + ", it is your turn to be served."
             + " at " + VAR_USER_NAME + ".";
 
     public String createMessage(String message, User user, Client client, Queue queue) {

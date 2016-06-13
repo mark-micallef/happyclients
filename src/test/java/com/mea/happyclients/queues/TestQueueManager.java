@@ -8,7 +8,7 @@ import com.mea.happyclients.users.UserDB;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class TestQueueManager {
@@ -36,14 +36,24 @@ public class TestQueueManager {
     }
 
     public void populateQueues() {
-        queueManager.addClientToQueue(user1.getId(), "Barber 1", new Client("John Doe", "35622626263"));
-        queueManager.addClientToQueue(user1.getId(), "Barber 1", new Client("Jane Doe", "35622626263"));
 
-        queueManager.addClientToQueue(user1.getId(), "Barber 2", new Client("Peppa Pig", "35622626263"));
-        queueManager.addClientToQueue(user1.getId(), "Barber 2", new Client("Daddy Pig", "35622626263"));
-        queueManager.addClientToQueue(user1.getId(), "Barber 2", new Client("Mummy Pig", "35622626263"));
-        queueManager.addClientToQueue(user1.getId(), "Barber 2", new Client("Zoe Zebra", "35622626263"));
-        queueManager.addClientToQueue(user1.getId(), "Barber 2", new Client("Danny Dog", "35622626263"));
+        MessagingInfrastructure msgInfrastructure = mock(MessagingInfrastructure.class);
+        when(msgInfrastructure.sendTextMessage((TextMessage) anyObject())).thenReturn(true)
+                .thenReturn(true)
+                .thenReturn(true)
+                .thenReturn(true)
+                .thenReturn(true)
+                .thenReturn(true)
+                .thenReturn(true);
+
+        queueManager.addClientToQueue(msgInfrastructure, user1, "Barber 1", new Client("John Doe", "35622626263"));
+        queueManager.addClientToQueue(msgInfrastructure, user1, "Barber 1", new Client("Jane Doe", "35622626263"));
+
+        queueManager.addClientToQueue(msgInfrastructure, user1, "Barber 2", new Client("Peppa Pig", "35622626263"));
+        queueManager.addClientToQueue(msgInfrastructure, user1, "Barber 2", new Client("Daddy Pig", "35622626263"));
+        queueManager.addClientToQueue(msgInfrastructure, user1, "Barber 2", new Client("Mummy Pig", "35622626263"));
+        queueManager.addClientToQueue(msgInfrastructure, user1, "Barber 2", new Client("Zoe Zebra", "35622626263"));
+        queueManager.addClientToQueue(msgInfrastructure, user1, "Barber 2", new Client("Danny Dog", "35622626263"));
     }
 
     @Test
