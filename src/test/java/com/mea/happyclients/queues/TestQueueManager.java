@@ -1,12 +1,15 @@
 package com.mea.happyclients.queues;
 
 import com.mea.happyclients.clients.Client;
+import com.mea.happyclients.infrastructure.MessagingInfrastructure;
+import com.mea.happyclients.messages.TextMessage;
 import com.mea.happyclients.users.User;
 import com.mea.happyclients.users.UserDB;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class TestQueueManager {
 
@@ -54,11 +57,15 @@ public class TestQueueManager {
 
     @Test
     public void testAdvanceQueue() {
+
         populateQueues();
 
-        queueManager.advanceQueue(user1.getId(), "Barber 1");
-        queueManager.advanceQueue(user1.getId(), "Barber 2");
-        queueManager.advanceQueue(user1.getId(), "Barber 2");
+        MessagingInfrastructure msgInfrastructure = mock(MessagingInfrastructure.class);
+        when(msgInfrastructure.sendTextMessage((TextMessage) anyObject())).thenReturn(true).thenReturn(true).thenReturn(true);
+
+        queueManager.advanceQueue(msgInfrastructure, user1.getId(), "Barber 1");
+        queueManager.advanceQueue(msgInfrastructure, user1.getId(), "Barber 2");
+        queueManager.advanceQueue(msgInfrastructure, user1.getId(), "Barber 2");
 
         assertEquals(1, user1.getQueueByName("Barber 1").getSize());
         assertEquals(3, user1.getQueueByName("Barber 2").getSize());

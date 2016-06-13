@@ -1,6 +1,7 @@
 package com.mea.happyclients.queues;
 
 import com.mea.happyclients.clients.Client;
+import com.mea.happyclients.infrastructure.MessagingInfrastructure;
 import com.mea.happyclients.messages.Message;
 import com.mea.happyclients.messages.MessageCreator;
 import com.mea.happyclients.messages.TextMessage;
@@ -36,7 +37,7 @@ public class QueueManager {
         channel = connectionFactory.createChannel();*/
     }
 
-    public void advanceQueue(String userID, String queueName) {
+    public void advanceQueue(MessagingInfrastructure msgInfrastructure, String userID, String queueName) {
         User user = userDB.getUserByID(userID);
         Queue queue = user.getQueueByName(queueName);
         List<Client> clients = queue.getOrderedListofClients();
@@ -45,9 +46,8 @@ public class QueueManager {
 
         for (Client client : clients) {
             String messageText = messageCreator.createMessage(user, client, queue);
-            TextMessage message = new TextMessage(user, client, messageText);
-
-
+            TextMessage message = new TextMessage(client.getMobileNumber(), messageText);
+            msgInfrastructure.getInstance().sendTextMessage(message);
         }
 
         //Remove first client from the queue

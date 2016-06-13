@@ -2,6 +2,7 @@ package com.mea.happyclients.clients;
 
 import com.mea.happyclients.queues.Queue;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.UUID;
 

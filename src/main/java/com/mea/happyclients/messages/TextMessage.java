@@ -4,25 +4,22 @@ package com.mea.happyclients.messages;
 import com.mea.happyclients.clients.Client;
 import com.mea.happyclients.users.User;
 
+import java.io.Serializable;
+
 /**
  * Encapsulates the notion of a text message.
  */
 
-public class TextMessage implements Message {
+public class TextMessage implements Message, Serializable {
 
-    protected User user = null;
-    protected Client client = null;
+    protected String mobileNumber;
     protected String messageText;
 
-    public TextMessage(User user, Client client, String messageText) {
-        this(messageText);
-        this.user = user;
-        this.client = client;
+    public TextMessage(String mobileNumber, String messageText) {
+        this.mobileNumber = mobileNumber;
+        this.messageText = messageText;
     }
 
-    public TextMessage(String messageText) {
-        setMessageText(messageText);
-    }
 
     public MessageTypes getMessageType() { return MessageTypes.TEXT; }
 
@@ -33,5 +30,6 @@ public class TextMessage implements Message {
     public String getMessageText() {
         return messageText;
     }
+
 
 }

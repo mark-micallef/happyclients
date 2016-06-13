@@ -3,6 +3,7 @@ package com.mea.happyclients.users;
 import com.mea.happyclients.queues.FifoQueue;
 import com.mea.happyclients.queues.Queue;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.UUID;
 
