@@ -23,7 +23,7 @@ public class FifoQueue implements Queue {
     }
 
     @Override
-    public Client getNextClient() {
+    public Client dequeueNextClient() {
 
         Client client = null;
 
@@ -33,6 +33,17 @@ public class FifoQueue implements Queue {
         }
 
         return client;
+    }
+
+    @Override
+    public Client peakNextClient() {
+        Client result = null;
+
+        if (clients.size() > 0) {
+            result = clients.get(0);
+        }
+
+        return result;
     }
 
     public String getName() {
@@ -56,6 +67,6 @@ public class FifoQueue implements Queue {
 
     @Override
     public int getClientPositionInQueue(Client client) {
-        return clients.indexOf(client);
+        return clients.indexOf(client) + 1;
     }
 }

@@ -11,7 +11,9 @@ public interface Queue {
 
     QueueTypes getType();
 
-    Client getNextClient();
+    Client dequeueNextClient();
+
+    Client peakNextClient();
 
     void addClient(Client client);
 

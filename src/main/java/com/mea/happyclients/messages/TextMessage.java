@@ -2,6 +2,9 @@ package com.mea.happyclients.messages;
 
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Encapsulates the notion of a text message.
@@ -9,6 +12,7 @@ import java.io.Serializable;
 
 public class TextMessage implements Message, Serializable {
 
+    protected long timestamp;
     protected String senderID;
     protected String mobileNumber;
     protected String messageText;
@@ -17,6 +21,7 @@ public class TextMessage implements Message, Serializable {
         this.senderID = senderID;
         this.mobileNumber = mobileNumber;
         this.messageText = messageText;
+        this.timestamp = System.currentTimeMillis();
     }
 
 
@@ -38,6 +43,15 @@ public class TextMessage implements Message, Serializable {
 
     public String getMobileNumber() {
         return mobileNumber;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public String getFormattedTimeStamp() {
+        SimpleDateFormat sdf = new SimpleDateFormat("K:mm a");
+        return sdf.format(new Date(getTimestamp()));
     }
 
 

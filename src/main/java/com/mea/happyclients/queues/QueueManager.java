@@ -2,14 +2,10 @@ package com.mea.happyclients.queues;
 
 import com.mea.happyclients.clients.Client;
 import com.mea.happyclients.infrastructure.MessagingInfrastructure;
-import com.mea.happyclients.messages.Message;
 import com.mea.happyclients.messages.MessageCreator;
 import com.mea.happyclients.messages.TextMessage;
 import com.mea.happyclients.users.User;
 import com.mea.happyclients.users.UserDB;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 
 import java.util.List;
 
@@ -38,20 +34,32 @@ public class QueueManager {
     }
 
     public void advanceQueue(MessagingInfrastructure msgInfrastructure, String userID, String queueName) {
+
         User user = userDB.getUserByID(userID);
         Queue queue = user.getQueueByName(queueName);
-        List<Client> clients = queue.getOrderedListofClients();
-
         MessageCreator messageCreator = new MessageCreator();
 
+        //Dequeue First Client and notify
+        Client firstClient = queue.peakNextClient();
+        TextMessage message = new TextMessage(user.getSenderID(), firstClient.getMobileNumber(), "");
+        String messageText = messageCreator.createYourTurnMessage(user, message.getTimestamp(), firstClient, queue);
+        message.setMessageText(messageText);
+        msgInfrastructure.sendTextMessage(message);
+        queue.dequeueNextClient();
+
+
+        //Notify remaining clients
+        List<Client> clients = queue.getOrderedListofClients();
+
         for (Client client : clients) {
-            String messageText = messageCreator.createMessage(user, client, queue);
-            TextMessage message = new TextMessage(user.getSenderID(), client.getMobileNumber(), messageText);
+            message = new TextMessage(user.getSenderID(), client.getMobileNumber(), messageText);
+            messageText = messageCreator.createMessage(user, message.getTimestamp(), client, queue);
+            message.setMessageText(messageText);
+
             msgInfrastructure.sendTextMessage(message);
         }
 
-        //Remove first client from the queue
-        queue.getNextClient();
+
     }
 
     public void addClientToQueue(MessagingInfrastructure msgInfrastructure, User user, String queueName, Client client) {
@@ -61,8 +69,10 @@ public class QueueManager {
 
         //Send text message
         MessageCreator messageCreator = new MessageCreator();
-        String messageText = messageCreator.createMessage(user, client, user.getQueueByName(queueName));
-        TextMessage message = new TextMessage(user.getSenderID(), client.getMobileNumber(), messageText);
+        TextMessage message = new TextMessage(user.getSenderID(), client.getMobileNumber(), "");
+        String messageText = messageCreator.createMessage(user, message.getTimestamp(), client, user.getQueueByName(queueName));
+        message.setMessageText(messageText);
+
         msgInfrastructure.sendTextMessage(message);
     }
 

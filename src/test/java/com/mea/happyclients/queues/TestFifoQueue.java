@@ -54,13 +54,13 @@ public class TestFifoQueue {
         queue.addClient(new Client("Jimmy Doe", "35612341234"));
 
         assertEquals(3, queue.getSize());
-        assertEquals(client, queue.getNextClient());
+        assertEquals(client, queue.dequeueNextClient());
         assertEquals(2, queue.getSize());
     }
 
     @Test
     public void testNextClientOnEmptyQueue() {
-        assertEquals(null, queue.getNextClient());
+        assertEquals(null, queue.dequeueNextClient());
         assertEquals(0, queue.getSize());
     }
 
