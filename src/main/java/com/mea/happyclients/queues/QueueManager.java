@@ -37,26 +37,28 @@ public class QueueManager {
 
         User user = userDB.getUserByID(userID);
         Queue queue = user.getQueueByName(queueName);
-        MessageCreator messageCreator = new MessageCreator();
+        if (queue != null && queue.getSize() > 0) {
+            MessageCreator messageCreator = new MessageCreator();
 
-        //Dequeue First Client and notify
-        Client firstClient = queue.peakNextClient();
-        TextMessage message = new TextMessage(user.getSenderID(), firstClient.getMobileNumber(), "");
-        String messageText = messageCreator.createYourTurnMessage(user, message.getTimestamp(), firstClient, queue);
-        message.setMessageText(messageText);
-        msgInfrastructure.sendTextMessage(message);
-        queue.dequeueNextClient();
-
-
-        //Notify remaining clients
-        List<Client> clients = queue.getOrderedListofClients();
-
-        for (Client client : clients) {
-            message = new TextMessage(user.getSenderID(), client.getMobileNumber(), messageText);
-            messageText = messageCreator.createMessage(user, message.getTimestamp(), client, queue);
+            //Dequeue First Client and notify
+            Client firstClient = queue.peakNextClient();
+            TextMessage message = new TextMessage(user.getSenderID(), firstClient.getMobileNumber(), "");
+            String messageText = messageCreator.createYourTurnMessage(user, message.getTimestamp(), firstClient, queue);
             message.setMessageText(messageText);
-
             msgInfrastructure.sendTextMessage(message);
+            queue.dequeueNextClient();
+
+
+            //Notify remaining clients
+            List<Client> clients = queue.getOrderedListofClients();
+
+            for (Client client : clients) {
+                message = new TextMessage(user.getSenderID(), client.getMobileNumber(), messageText);
+                messageText = messageCreator.createMessage(user, message.getTimestamp(), client, queue);
+                message.setMessageText(messageText);
+
+                msgInfrastructure.sendTextMessage(message);
+            }
         }
 
 
