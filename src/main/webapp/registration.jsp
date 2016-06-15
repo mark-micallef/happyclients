@@ -12,27 +12,27 @@
 </head>
 <body>
 
-<form>
+<form method="post">
     <table>
         <tr>
             <td>Business Name:</td>
-            <td><input type="text" name="businessName"></td>
+            <td><input type="text" name="businessName" title="Tell us the name of your business"></td>
         </tr>
 
         <tr>
             <td>e-mail address:</td>
-            <td><input type="text" name="businessName"></td>
+            <td><input type="text" name="email" title="Tell us your e-mail address so we can contact you"></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input type="password" name="password"></td>
+            <td><input type="password" name="password" title="What would you like your password to be?"></td>
         </tr>
         <tr>
             <td>Confirm Password:</td>
-            <td><input type="password" name="confirmPassword"></td>
+            <td><input type="password" name="confirmPassword" title="Confirm your password for us"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Register"></td>
+            <td colspan="2"><input type="submit" value="Register" title="Complete registration"></td>
         </tr>
 
     </table>
