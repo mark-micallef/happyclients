@@ -23,7 +23,7 @@
 
         <tr>
             <td>e-mail address:</td>
-            <td><input type="email" name="email" title="Tell us your e-mail address so we can contact you" pattern="" required></td>
+            <td><input type="email" name="email" title="Tell us your e-mail address so we can contact you" required></td>
         </tr>
         <tr>
             <td>Password:</td>
