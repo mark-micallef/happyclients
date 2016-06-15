@@ -6,22 +6,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Register as a Business User</title>
 </head>
 <body>
-<H1>Create a new account</H1>
+<H1>Create a new account <% if (request.getParameter("submitted").equals("true")) { %> (SUBMITTED) <%}%> </H1>
 <form method="post">
+    <input type="hidden" name="submitted" value="true"/>
     <table>
         <tr>
             <td>Business Name:</td>
-            <td><input type="text" name="businessName" title="Tell us the name of your business" required></td>
+            <td><input type="text" name="businessName" title="Tell us the name of your business" required autofocus></td>
         </tr>
 
         <tr>
             <td>e-mail address:</td>
-            <td><input type="text" name="email" title="Tell us your e-mail address so we can contact you" required></td>
+            <td><input type="email" name="email" title="Tell us your e-mail address so we can contact you" pattern="" required></td>
         </tr>
         <tr>
             <td>Password:</td>
