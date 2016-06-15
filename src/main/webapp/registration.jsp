@@ -16,20 +16,20 @@
     <table>
         <tr>
             <td>Business Name:</td>
-            <td><input type="text" name="businessName" title="Tell us the name of your business"></td>
+            <td><input type="text" name="businessName" title="Tell us the name of your business" required></td>
         </tr>
 
         <tr>
             <td>e-mail address:</td>
-            <td><input type="text" name="email" title="Tell us your e-mail address so we can contact you"></td>
+            <td><input type="text" name="email" title="Tell us your e-mail address so we can contact you" required></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input type="password" name="password" title="What would you like your password to be?"></td>
+            <td><input type="password" name="password" title="What would you like your password to be?" required></td>
         </tr>
         <tr>
             <td>Confirm Password:</td>
-            <td><input type="password" name="confirmPassword" title="Confirm your password for us"></td>
+            <td><input type="password" name="confirmPassword" title="Confirm your password for us" required></td>
         </tr>
         <tr>
             <td colspan="2" align="center"><input type="submit" value="Register" title="Complete registration"></td>
