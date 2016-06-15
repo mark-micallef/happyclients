@@ -11,7 +11,7 @@
     <title>Register as a Business User</title>
 </head>
 <body>
-
+<H1>Create a new account</H1>
 <form method="post">
     <table>
         <tr>
