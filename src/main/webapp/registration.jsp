@@ -18,13 +18,21 @@
             <td>Business Name:</td>
             <td><input type="text" name="businessName"></td>
         </tr>
+
+        <tr>
+            <td>e-mail address:</td>
+            <td><input type="text" name="businessName"></td>
+        </tr>
         <tr>
             <td>Password:</td>
-            <td><input type="text" name="password"></td>
+            <td><input type="password" name="password"></td>
         </tr>
         <tr>
             <td>Confirm Password:</td>
-            <td><input type="text" name="confirmPassword"></td>
+            <td><input type="password" name="confirmPassword"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Register"></td>
         </tr>
 
     </table>
