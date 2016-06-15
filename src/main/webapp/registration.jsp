@@ -32,7 +32,7 @@
             <td><input type="password" name="confirmPassword" title="Confirm your password for us"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Register" title="Complete registration"></td>
+            <td colspan="2" align="centre"><input type="submit" value="Register" title="Complete registration"></td>
         </tr>
 
     </table>
