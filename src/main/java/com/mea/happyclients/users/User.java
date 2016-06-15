@@ -29,7 +29,7 @@ public class User {
     }
 
     public String getSenderID() {
-        return name.replace(" ", "");
+        return name.replace(" ", "").substring(0, 11);
     }
 
     public String getId() {
