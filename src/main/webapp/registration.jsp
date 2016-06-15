@@ -12,7 +12,7 @@
     <title>Register as a Business User</title>
 </head>
 <body>
-<H1>Create a new account <% if (request.getParameter("submitted").equals("true")) { %> (SUBMITTED) <%}%> </H1>
+<H1>Create a new account <% if (request.getParameter("submitted") != null) { %> (SUBMITTED) <%}%> </H1>
 <form method="post">
     <input type="hidden" name="submitted" value="true"/>
     <table>
