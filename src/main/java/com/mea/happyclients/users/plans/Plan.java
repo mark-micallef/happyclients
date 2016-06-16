@@ -34,7 +34,7 @@ public abstract class Plan {
         }
 
 
-        return result + "/month";
+        return result + " / month";
     }
 
     public abstract int getPriceInEuroCents();
