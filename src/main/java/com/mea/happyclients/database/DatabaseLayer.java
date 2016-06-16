@@ -153,7 +153,6 @@ public class DatabaseLayer {
                 user.setId(rs.getString("id"));
                 user.setName(rs.getString("name"));
             }
-            result = rs.getInt(1) > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
