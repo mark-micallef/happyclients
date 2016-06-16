@@ -21,9 +21,9 @@
     boolean submitted = (request.getParameter("submitted") != null);
 
     ErrorList errorList = new ErrorList();
-    String email;
-    String password;
-    String confirmPassword;
+    String email = null;
+    String password = null;
+    String confirmPassword = null;
 
     if (submitted) {
         submitted = true;
