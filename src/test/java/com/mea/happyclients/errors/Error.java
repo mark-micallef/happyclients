@@ -1,11 +1,25 @@
 package com.mea.happyclients.errors;
 
 /**
- * Provides an interface for passing errors around the application
+ * Provides a mechanism for passing errors around the application
  */
-public interface Error {
+public class Error {
 
-    int getErrorCode();
-    String getErrorMessage();
+    private int errorCode;
+    private String errorMessage;
+
+
+    public Error(int errorCode, String errorMessage) {
+        this.errorCode = errorCode;
+        this.errorMessage = errorMessage;
+    }
+
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    String getErrorMessage() {
+        return errorMessage;
+    }
 
 }
