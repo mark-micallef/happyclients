@@ -92,7 +92,11 @@ public class DatabaseLayer {
         ResultSet rs = null;
 
         try {
-            rs = getConnection().createStatement().executeQuery(query);
+            Connection conn = getConnection();
+            Statement stmt = conn.createStatement()
+            rs = stmt.executeQuery(query);
+            stmt.close();
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -117,6 +121,7 @@ public class DatabaseLayer {
                 rs.next();
                 result = rs.getInt(1);
             }
+            stmt.close();
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
