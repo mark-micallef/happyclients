@@ -1,3 +1,4 @@
+<%@ page import="com.mea.happyclients.users.plans.Plan" %>
 <%@include file="header.jsp" %>
 
 <%
@@ -33,10 +34,9 @@
 </table>
 
 <datalist id="plans">
-    <option value="Free"/>
-    <option value="Basic"/>
-    <option value="Premium"/>
-    <option value="Platinum"/>
+    <% for (Plan plan : Plan.plans) { %>
+    <option value="<%= plan.getName() %>"/>
+    <% } %>
 </datalist>
 
 </body>
