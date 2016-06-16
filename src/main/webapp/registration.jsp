@@ -69,12 +69,6 @@
     <input type="hidden" name="submitted" value="true"/>
     <table>
         <tr>
-            <td>Business Name:</td>
-            <td><input type="text" name="businessName" title="Tell us the name of your business" required autofocus>
-            </td>
-        </tr>
-
-        <tr>
             <td>e-mail address:</td>
             <td><input type="email" name="email" title="Tell us your e-mail address so we can contact you" required>
             </td>
