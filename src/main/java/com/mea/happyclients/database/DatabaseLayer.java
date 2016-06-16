@@ -93,7 +93,7 @@ public class DatabaseLayer {
 
         try {
             Connection conn = getConnection();
-            Statement stmt = conn.createStatement()
+            Statement stmt = conn.createStatement();
             rs = stmt.executeQuery(query);
             stmt.close();
             conn.close();
