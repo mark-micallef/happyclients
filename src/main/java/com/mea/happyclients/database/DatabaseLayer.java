@@ -144,7 +144,7 @@ public class DatabaseLayer {
         User user = null;
 
         try {
-            ResultSet rs = executeQuery("select * from users where email='" + email + ";");
+            ResultSet rs = executeQuery("select * from users where email='" + email + "';");
             if (rs.next()) {
                 user = new User();
                 user.setId(rs.getString("id"));
