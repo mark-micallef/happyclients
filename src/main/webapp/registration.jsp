@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.mea.happyclients.database.DatabaseLayer" %><%--
   Created by IntelliJ IDEA.
   User: markmicallef
   Date: 15/06/2016
@@ -12,7 +12,22 @@
     <title>Register as a Business User</title>
 </head>
 <body>
-<H1>Create a new account <% if (request.getParameter("submitted") != null) { %> (SUBMITTED) <%}%> </H1>
+
+<%
+
+    boolean errors = false;
+    boolean submitted = false;
+
+    if (request.getParameter("submitted") != null) {
+        submitted = true;
+
+        //Process form
+        DatabaseLayer dbLayer = DatabaseLayer.getInstance();
+    }
+
+%>
+
+<H1>Create a new account</H1>
 <form method="post">
     <input type="hidden" name="submitted" value="true"/>
     <table>

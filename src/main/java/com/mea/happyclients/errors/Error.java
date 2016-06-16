@@ -8,7 +8,6 @@ public class Error {
     private int errorCode;
     private String errorMessage;
 
-
     public Error(int errorCode, String errorMessage) {
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
@@ -20,6 +19,10 @@ public class Error {
 
     String getErrorMessage() {
         return errorMessage;
+    }
+
+    public boolean isOk() {
+        return errorCode == Errors.ERR_OK;
     }
 
 }

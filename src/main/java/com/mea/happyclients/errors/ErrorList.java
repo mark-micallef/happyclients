@@ -18,4 +18,14 @@ public class ErrorList {
         return errors;
     }
 
+    public boolean isOk() {
+        boolean result = true;
+
+        for (Error error : errors) {
+            result = result & error.isOk();
+        }
+
+        return result;
+    }
+
 }
