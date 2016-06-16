@@ -32,7 +32,7 @@
         <td>
             <select name="plan">
                 <% for (Plan plan : Plan.plans) { %>
-                <option value="<%= plan.getName() %>"/>
+                <option value="<%= plan.getName() %>"><%= plan.getName() %></option>
                 <% } %>
             </select>
         </td>
