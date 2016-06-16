@@ -11,7 +11,7 @@
 <% if (loggedUser == null) {%>
 <a href="login.jsp">Log in</a><br/>
 <% } else {%>
-<a href="logout.jsp">Log out</a><br/>
+<a href="logout.jsp">Log out <%= loggedUser.getEmail() %></a><br/>
 <% } %>
 
 </html>
