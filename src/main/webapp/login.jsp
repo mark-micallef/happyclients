@@ -1,6 +1,7 @@
 <%@ page import="com.mea.happyclients.errors.ErrorList" %>
 <%@ page import="com.mea.happyclients.database.DatabaseLayer" %>
-<%@ page import="com.mea.happyclients.errors.Errors" %><%--
+<%@ page import="com.mea.happyclients.errors.Errors" %>
+<%@ page import="com.mea.happyclients.users.User" %><%--
   Created by IntelliJ IDEA.
   User: markmicallef
   Date: 16/06/2016
@@ -25,7 +26,12 @@
         }
 
         if (errorList.isOk()) {
-            session.setAttribute( "loggedUser", dbLayer.getUserByEmail("email").getId() );
+            User user = dbLayer.getUserByEmail("email");
+            if (user == null) {
+                errorList.addError(Errors.ERR_UI_LOGIN_FAILED, "Unkown error occurred during login.");
+            }
+
+            session.setAttribute( "loggedUser", user.getId());
             response.sendRedirect("index.jsp");
         }
     }
