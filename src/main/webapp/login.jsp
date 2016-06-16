@@ -24,6 +24,7 @@
 <html>
 <head>
     <title>Login</title>
+    <H1>Log in</H1>
     <form method="post">
         <input type="hidden" name="submitted" value="true"/>
         <table>
