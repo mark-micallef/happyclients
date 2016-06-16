@@ -24,7 +24,6 @@
     String email = "";
 
     if (submitted) {
-        submitted = true;
 
         DatabaseLayer dbLayer = DatabaseLayer.getInstance();
         email = request.getParameter("email");
