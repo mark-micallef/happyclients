@@ -2,6 +2,7 @@ package com.mea.happyclients.database;
 
 import com.mea.happyclients.errors.ErrorList;
 import com.mea.happyclients.errors.Errors;
+import com.mea.happyclients.infrastructure.Utils;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
@@ -129,6 +130,21 @@ public class DatabaseLayer {
 
         try {
             ResultSet rs = executeQuery("select count(*) from users where email='" + email + "';");
+            rs.next();
+            result = rs.getInt(1) > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public boolean userLogin(String email, String password) {
+        boolean result = false;
+
+        try {
+            ResultSet rs = executeQuery("select count(*) from users where email='" + email
+                    + "' and password='" + Utils.encodePassword(password) + "';");
             rs.next();
             result = rs.getInt(1) > 0;
         } catch (Exception e) {

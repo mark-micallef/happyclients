@@ -1,5 +1,6 @@
 <%@ page import="com.mea.happyclients.errors.ErrorList" %>
-<%@ page import="com.mea.happyclients.database.DatabaseLayer" %><%--
+<%@ page import="com.mea.happyclients.database.DatabaseLayer" %>
+<%@ page import="com.mea.happyclients.errors.Errors" %><%--
   Created by IntelliJ IDEA.
   User: markmicallef
   Date: 16/06/2016
@@ -17,6 +18,15 @@
     if (submitted) {
         DatabaseLayer dbLayer = DatabaseLayer.getInstance();
         email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        if (!dbLayer.userLogin(email, password)) {
+            errorList.addError(Errors.ERR_UI_LOGIN_FAILED, "Login failed.");
+        }
+
+        if (errorList.isOk()) {
+            response.sendRedirect("index.jsp");
+        }
     }
 %>
 
@@ -25,6 +35,9 @@
 <head>
     <title>Login</title>
     <H1>Log in</H1>
+
+    <%= errorList.toHtmlString(); %>
+
     <form method="post">
         <input type="hidden" name="submitted" value="true"/>
         <table>
