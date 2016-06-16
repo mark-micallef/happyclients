@@ -29,14 +29,18 @@
     </tr>
     <tr>
         <td>Plan:</td>
-        <td><input list="plans"> </td>
+        <td>
+            <select name="plan">
+                <% for (Plan plan : Plan.plans) { %>
+                <option value="<%= plan.getName() %>"/>
+                <% } %>
+            </select>
+        </td>
     </tr>
 </table>
 
 <datalist id="plans">
-    <% for (Plan plan : Plan.plans) { %>
-    <option value="<%= plan.getName() %>"/>
-    <% } %>
+
 </datalist>
 
 </body>
