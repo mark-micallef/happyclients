@@ -34,7 +34,13 @@ public class ErrorList {
     }
 
     public String toHtmlString() {
-        return "There are " + errors.size() + " errors.";
+        String html = "";
+
+        for (Error error : errors) {
+            html += error.getErrorCode() + ": " + error.getErrorMessage() + "<BR/>";
+        }
+
+        return html;
     }
 
     public boolean isOk() {
