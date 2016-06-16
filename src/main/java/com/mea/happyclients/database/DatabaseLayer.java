@@ -1,12 +1,15 @@
 package com.mea.happyclients.database;
 
 import com.mea.happyclients.errors.ErrorList;
+import com.mea.happyclients.errors.Errors;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import static com.mea.happyclients.errors.Errors.*;
 
 /**
  * Manages data creation, retreival and management.
@@ -55,17 +58,43 @@ public class DatabaseLayer {
     public ErrorList createUserInDB(String email, String password) {
         ErrorList errorList = new ErrorList();
 
-        String query = "INSERT INTO users\n" +
-                "(`email`,`password`) \n VALUES \n" +
-                "('" + email + "', '" + password + "');";
+        //Carry out preliminary checks
+        if (userWithEmailExists(email)) {
+            errorList.addError(ERR_DB_DUPLICATE_ENTRY, "A user with that e-mail address already exists.");
+        }
 
-        int id = executeInsert(query);
+        if (errorList.isOk()) {
+
+            String query = "INSERT INTO users\n" +
+                    "(`email`,`password`) \n VALUES \n" +
+                    "('" + email + "', '" + password + "');";
+
+            int id = executeInsert(query);
+
+            if (id <= 0) {
+                errorList.addError(ERR_DB_UNKOWN, "Unknown error occurred when creating user.");
+            }
+
+        }
 
         return errorList;
     }
 
     private int executeInsert(String query) {
         return executeInsert(query, null);
+    }
+
+    private ResultSet executeQuery(String query) {
+
+        ResultSet rs = null;
+
+        try {
+            rs = getConnection().createStatement().executeQuery(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return rs;
     }
 
     private int executeInsert(String query, String idColumnName) {
@@ -93,8 +122,19 @@ public class DatabaseLayer {
         return result;
     }
 
-    public boolean businessExists(String businessName) {
-        return false;
+    public boolean userWithEmailExists(String email) {
+
+        boolean result = false;
+
+        try {
+            ResultSet rs = executeQuery("select count(*) from users where email='" + email + "';");
+            rs.next();
+            result = rs.getInt(1) > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
 

@@ -18,6 +18,25 @@ public class ErrorList {
         return errors;
     }
 
+    public void addError(Error error) {
+        errors.add(error);
+    }
+
+    public void addError(int errorCode, String errorMessage) {
+        addError(new Error(errorCode, errorMessage));
+    }
+
+    public void mergeErrorLists(ErrorList errorListToMerge) {
+        List<Error> list = errorListToMerge.getErrors();
+        for (Error error : list) {
+            addError(error);
+        }
+    }
+
+    public String toHtmlString() {
+        return "There are " + errors.size() + " errors.";
+    }
+
     public boolean isOk() {
         boolean result = true;
 

@@ -3,6 +3,7 @@ package com.mea.happyclients.errors;
 /**
  * Provides a mechanism for passing errors around the application
  */
+
 public class Error {
 
     private int errorCode;
