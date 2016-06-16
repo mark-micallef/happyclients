@@ -55,7 +55,7 @@
         <table>
             <tr>
                 <td>e-mail address:</td>
-                <td><input type="email" name="email" value="<%=email%>" title="Tell us your e-mail address so we can contact you" required>
+                <td><input type="email" name="email" value="<%=email%>" title="Tell us your e-mail address so we can contact you" required autofocus>
                 </td>
             </tr>
             <tr>

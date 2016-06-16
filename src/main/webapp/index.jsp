@@ -11,6 +11,7 @@
 <a href="register.jsp">Register</a> <br/>
 <a href="login.jsp">Log in</a><br/>
 <% } else {%>
+<a href="profile.jsp">Edit Profile</a>
 <a href="logout.jsp">Log out <%= loggedUser.getEmail() %></a><br/>
 <% } %>
 

@@ -16,6 +16,7 @@ public class User {
     protected String id = null;
     protected String name = null;
     protected String email = null;
+    protected String senderID = null;
     protected HashMap<String, Queue> queues;
 
     public User() {
@@ -32,7 +33,10 @@ public class User {
     }
 
     public String getSenderID() {
-        return name.replace(" ", "").substring(0, 11);
+        if (senderID == null) {
+            senderID = "HappyClients";
+        }
+        return senderID;
     }
 
     public String getId() {
