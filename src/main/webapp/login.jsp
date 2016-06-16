@@ -1,13 +1,18 @@
 <%@ page import="com.mea.happyclients.errors.ErrorList" %>
 <%@ page import="com.mea.happyclients.database.DatabaseLayer" %>
 <%@ page import="com.mea.happyclients.errors.Errors" %>
-<%@ page import="com.mea.happyclients.users.User" %><%--
-  Created by IntelliJ IDEA.
-  User: markmicallef
-  Date: 16/06/2016
-  Time: 6:55 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.mea.happyclients.users.User" %>
+
+
+<%@include file="header.jsp" %>
+
+<%
+    if (loggedUser != null) {
+        response.sendRedirect("index.jsp");
+    }
+%>
+
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%

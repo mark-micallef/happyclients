@@ -1,8 +1,7 @@
 <%@ page import="com.mea.happyclients.users.User" %>
 
-<%
-    User loggedUser = (User) session.getAttribute("loggedUser");
-%>
+<%@include file="header.jsp" %>
+
 
 <html>
 <title>The Happy Client</title>

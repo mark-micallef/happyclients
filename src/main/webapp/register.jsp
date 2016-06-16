@@ -1,14 +1,19 @@
 <%@ page import="com.mea.happyclients.database.DatabaseLayer" %>
 <%@ page import="com.mea.happyclients.errors.ErrorList" %>
 <%@ page import="com.mea.happyclients.errors.Errors" %>
-<%@ page import="com.mea.happyclients.infrastructure.Utils" %><%--
-  Created by IntelliJ IDEA.
-  User: markmicallef
-  Date: 15/06/2016
-  Time: 10:36 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.mea.happyclients.infrastructure.Utils" %>
+
+<%@include file="header.jsp" %>
+
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    if (loggedUser != null) {
+        response.sendRedirect("index.jsp");
+    }
+%>
+
 
 <html>
 <head>
@@ -38,7 +43,7 @@
         }
 
         //2. Check that password is strong enough
-       if (password.length() < 8) {
+        if (password.length() < 8) {
             errorList.addError(Errors.ERR_UI_REG_PASSWORD_WEAK, "The selected password needs to be at least 8 characters long.");
         }
 
@@ -69,7 +74,8 @@
     <table>
         <tr>
             <td>e-mail address:</td>
-            <td><input type="email" name="email" value="<%=email%>" title="Tell us your e-mail address so we can contact you" required>
+            <td><input type="email" name="email" value="<%=email%>"
+                       title="Tell us your e-mail address so we can contact you" required>
             </td>
         </tr>
         <tr>
