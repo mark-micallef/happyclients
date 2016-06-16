@@ -36,7 +36,7 @@
     <title>Login</title>
     <H1>Log in</H1>
 
-    <%= errorList.toHtmlString(); %>
+    <%= errorList.toHtmlString() %>
 
     <form method="post">
         <input type="hidden" name="submitted" value="true"/>
