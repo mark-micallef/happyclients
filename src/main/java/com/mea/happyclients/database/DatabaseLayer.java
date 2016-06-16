@@ -26,7 +26,8 @@ public class DatabaseLayer {
 
     private void init() {
         ds = new BasicDataSource();
-        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        //ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setUsername("happyclients");
         ds.setPassword("password");
         ds.setUrl("jdbc:mysql://localhost/happyclients?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
