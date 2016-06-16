@@ -59,7 +59,7 @@
 <H1>User created</H1>
 <%} else {%>
 
-<H1>Create a new account</H1>
+<H1>Create a new account <%=System.getProperty("java.version")%></H1>
 
 <% if (!errorList.isOk()) { %>
 <%= errorList.toHtmlString()%>
