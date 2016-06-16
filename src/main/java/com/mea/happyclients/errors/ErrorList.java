@@ -40,6 +40,8 @@ public class ErrorList {
             html += error.getErrorCode() + ": " + error.getErrorMessage() + "<BR/>";
         }
 
+        html += "<BR/>";
+
         return html;
     }
 
