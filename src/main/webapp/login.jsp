@@ -30,7 +30,7 @@
             if (user == null) {
                 errorList.addError(Errors.ERR_UI_LOGIN_FAILED, "Unkown error occurred during login.");
             } else {
-                session.setAttribute("loggedUser", user.getId());
+                session.setAttribute("loggedUser", user);
                 response.sendRedirect("index.jsp");
             }
         }

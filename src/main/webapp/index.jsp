@@ -1,5 +1,7 @@
+<%@ page import="com.mea.happyclients.users.User" %>
+
 <%
-    String loggedUser = session.getAttribute("loggedUser");
+    User loggedUser = (User) session.getAttribute("loggedUser");
 %>
 
 <html>
