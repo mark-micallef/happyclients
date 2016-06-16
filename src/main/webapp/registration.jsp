@@ -21,17 +21,15 @@
     boolean submitted = (request.getParameter("submitted") != null);
 
     ErrorList errorList = new ErrorList();
-    String email = null;
-    String password = null;
-    String confirmPassword = null;
+    String email = "";
 
     if (submitted) {
         submitted = true;
 
         DatabaseLayer dbLayer = DatabaseLayer.getInstance();
         email = request.getParameter("email");
-        password = request.getParameter("password");
-        confirmPassword = request.getParameter("confirmPassword");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
 
 
         //Process form
@@ -73,7 +71,7 @@
     <table>
         <tr>
             <td>e-mail address:</td>
-            <td><input type="email" name="email" title="Tell us your e-mail address so we can contact you" required>
+            <td><input type="email" name="email" value="<%=email%>" title="Tell us your e-mail address so we can contact you" required>
             </td>
         </tr>
         <tr>
