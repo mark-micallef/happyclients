@@ -94,7 +94,6 @@ public class DatabaseLayer {
         try {
             Connection conn = getConnection();
             rs = conn.createStatement().executeQuery(query);
-            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -146,7 +145,7 @@ public class DatabaseLayer {
         User user = null;
 
         try {
-            ResultSet rs = executeQuery("select * from users where email='" + email + ";");
+            ResultSet rs = executeQuery("select * from users where email='" + email + "';");
             if (rs.next()) {
                 user = new User();
                 user.setEmail(rs.getString("email"));
