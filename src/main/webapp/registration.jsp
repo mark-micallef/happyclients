@@ -26,7 +26,7 @@
         submitted = true;
 
         DatabaseLayer dbLayer = DatabaseLayer.getInstance();
-        String email = request.getParameter("password");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
 
