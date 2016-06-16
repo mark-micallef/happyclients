@@ -21,14 +21,17 @@
     boolean submitted = (request.getParameter("submitted") != null);
 
     ErrorList errorList = new ErrorList();
+    String email;
+    String password;
+    String confirmPassword;
 
     if (submitted) {
         submitted = true;
 
         DatabaseLayer dbLayer = DatabaseLayer.getInstance();
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("confirmPassword");
+        email = request.getParameter("email");
+        password = request.getParameter("password");
+        confirmPassword = request.getParameter("confirmPassword");
 
 
         //Process form
@@ -55,7 +58,8 @@
 %>
 
 <% if (submitted && errorList.isOk()) {%>
-<H1>User created</H1>
+<H1>User created <%= password %>  and <%= confirmPassword %>
+</H1>
 <%} else {%>
 
 <H1>Create a new account</H1>
