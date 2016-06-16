@@ -55,7 +55,7 @@
 
 %>
 
-<% if (submitted && !errorList.isOk()) {%>
+<% if (submitted && errorList.isOk()) {%>
 <H1>User created</H1>
 <%} else {%>
 
