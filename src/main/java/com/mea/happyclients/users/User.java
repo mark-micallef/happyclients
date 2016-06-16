@@ -13,14 +13,17 @@ import java.util.UUID;
  */
 public class User {
 
-    protected String id;
-    protected String name;
+    protected String id = null;
+    protected String name = null;
+    protected String email = null;
     protected HashMap<String, Queue> queues;
 
-    public User(String name) {
-        id = UUID.randomUUID().toString();
-        setName(name);
+    public User() {
 
+    }
+
+    public User(String name) {
+        setName(name);
         queues = new HashMap<>();
     }
 
@@ -36,8 +39,20 @@ public class User {
         return id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public HashMap<String, Queue> getQueues() {

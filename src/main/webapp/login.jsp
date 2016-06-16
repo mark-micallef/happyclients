@@ -25,6 +25,7 @@
         }
 
         if (errorList.isOk()) {
+            session.setAttribute( "loggedUser", dbLayer.getUserByEmail("email").getId() );
             response.sendRedirect("index.jsp");
         }
     }
