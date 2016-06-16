@@ -13,8 +13,8 @@ public class Errors {
     public final static int ERR_DB_DUPLICATE_ENTRY  = 1001;
 
     //UI data validation errors
-    public final static int ERR_UI_UNKOWN                   = 1000;
-    public final static int ERR_UI_REG_PASSWORDS_DONT_MATCH = 1001;
-    public final static int ERR_UI_REG_PASSWORD_WEAK        = 1002;
+    public final static int ERR_UI_UNKOWN                   = 2000;
+    public final static int ERR_UI_REG_PASSWORDS_DONT_MATCH = 2001;
+    public final static int ERR_UI_REG_PASSWORD_WEAK        = 2002;
 
 }
