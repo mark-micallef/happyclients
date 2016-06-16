@@ -4,7 +4,7 @@ public class PremiumPlan extends Plan {
 
     public PremiumPlan() {
         super();
-        name = "Free";
+        name = "Premium";
     }
 
     @Override

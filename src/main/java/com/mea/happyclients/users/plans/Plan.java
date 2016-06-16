@@ -1,5 +1,7 @@
 package com.mea.happyclients.users.plans;
 
+import java.text.DecimalFormat;
+
 /**
  * Contains data about a User's subscription plan to the site
  */
@@ -19,7 +21,20 @@ public abstract class Plan {
     }
 
     public String toString() {
-        return name;
+        return name + " (" + getFormattedPrice() + ")";
+    }
+
+    public String getFormattedPrice() {
+        String result = "€0";
+
+        double priceinEuros = (double) getPriceInEuroCents() / 100;
+        if (priceinEuros > 0) {
+            DecimalFormat df = new DecimalFormat("####.00");
+            result = "€" + df.format(priceinEuros);
+        }
+
+
+        return result + "/month";
     }
 
     public abstract int getPriceInEuroCents();
