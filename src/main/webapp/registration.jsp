@@ -56,8 +56,7 @@
 %>
 
 <% if (submitted && errorList.isOk()) {%>
-<H1>User created <%= password %>  and <%= confirmPassword %>
-</H1>
+<H1>User created</H1>
 <%} else {%>
 
 <H1>Create a new account</H1>
