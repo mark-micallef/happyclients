@@ -93,9 +93,7 @@ public class DatabaseLayer {
 
         try {
             Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            stmt.close();
+            rs = conn.createStatement().executeQuery(query);
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -121,7 +119,6 @@ public class DatabaseLayer {
                 rs.next();
                 result = rs.getInt(1);
             }
-            stmt.close();
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -149,13 +146,14 @@ public class DatabaseLayer {
         User user = null;
 
         try {
-            ResultSet rs = executeQuery("select * from users where email='" + email + "';");
+            ResultSet rs = executeQuery("select * from users where email='" + email + ";");
             if (rs.next()) {
                 user = new User();
-                user.setId(rs.getString("id"));
                 user.setEmail(rs.getString("email"));
+                user.setId(rs.getString("id"));
                 user.setName(rs.getString("name"));
             }
+            result = rs.getInt(1) > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
