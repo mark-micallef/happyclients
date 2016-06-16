@@ -18,7 +18,6 @@
 
 <%
 
-    boolean errors = false;
     boolean submitted = (request.getParameter("submitted") != null);
 
     ErrorList errorList = new ErrorList();
@@ -39,9 +38,9 @@
         }
 
         //2. Check that password is strong enough
-        if (password.length() < 8) {
+     /*   if (password.length() < 8) {
             errorList.addError(Errors.ERR_UI_REG_PASSWORD_WEAK, "The selected password needs to be at least 8 characters long.");
-        }
+        }*/
 
         //3. Check that a user with the same e-mail address does not exist
         if (dbLayer.userWithEmailExists(email)) {
