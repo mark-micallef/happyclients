@@ -91,9 +91,9 @@ public class DatabaseLayer {
 
             String update = "update users \n" +
                     "set name='" + user.getName() + "' " +
-                    "set senderId='" + user.getSenderID() + "' ";
+                    ", senderId='" + user.getSenderID() + "' ";
 
-            executeQuery(update);
+            executeUpdate(update);
 
         }
 
@@ -102,6 +102,22 @@ public class DatabaseLayer {
 
     private int executeInsert(String query) {
         return executeInsert(query, null);
+    }
+
+    private int executeUpdate(String update) {
+        int result = 0;
+
+        Connection conn = getConnection();
+
+        try {
+            Statement stmt = conn.createStatement();
+            result = stmt.executeUpdate(update);
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
     private ResultSet executeQuery(String query) {

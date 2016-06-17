@@ -40,7 +40,7 @@ public class User {
 
     public String getSenderID() {
         if (senderID == null) {
-            senderID = "HappyClients";
+            senderID = "HappyClient";
         }
         return senderID;
     }
