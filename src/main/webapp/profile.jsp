@@ -11,6 +11,12 @@
         senderIDEnabled = "";
     }
 
+    //Process Form
+    loggedUser.setName(request.getParameter("name"));
+    loggedUser.setSenderID(request.getParameter("senderID"));
+
+
+
 %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -30,7 +36,7 @@
         <td><input type="text" name="name" value="<%= loggedUser.getName() %>" autofocus/></td>
     </tr>
     <tr>
-        <td>SenderID:</td>
+        <td>Default Sender ID:</td>
         <td><input type="text" name="senderID" value="<%= loggedUser.getSenderID() %>" maxlength="11" <%= senderIDEnabled %>></td>
     </tr>
     <tr>

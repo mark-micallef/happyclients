@@ -84,6 +84,22 @@ public class DatabaseLayer {
         return errorList;
     }
 
+    public ErrorList saveUser(User user) {
+        ErrorList errorList = new ErrorList();
+
+        if (errorList.isOk()) {
+
+            String update = "update users \n" +
+                    "set name='" + user.getName() + "' " +
+                    "set senderId='" + user.getSenderID() + "' ";
+
+            executeQuery(update);
+
+        }
+
+        return errorList;
+    }
+
     private int executeInsert(String query) {
         return executeInsert(query, null);
     }

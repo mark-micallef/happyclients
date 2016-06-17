@@ -45,6 +45,10 @@ public class User {
         return senderID;
     }
 
+    public String setSenderID(String senderID) {
+        this.senderID = senderID;
+    }
+
     public Plan getPlan() {
         return plan;
     }
