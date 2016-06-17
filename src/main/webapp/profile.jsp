@@ -6,8 +6,10 @@
         response.sendRedirect("login.jsp");
     }
 
-    String senderIDEnabled = "";
-    if (loggedUser.getPlan())
+    String senderIDEnabled = "disabled";
+    if (loggedUser.getPlan().getMaxSenderIDs() != 0) {
+        senderIDEnabled = "";
+    }
 
 %>
 
@@ -29,7 +31,7 @@
     </tr>
     <tr>
         <td>SenderID:</td>
-        <td><input type="text" name="senderID" value="<%= loggedUser.getSenderID() %>" maxlength="11"></td>
+        <td><input type="text" name="senderID" value="<%= loggedUser.getSenderID() %>" maxlength="11" <%= senderIDEnabled %>></td>
     </tr>
     <tr>
         <td>Plan:</td>
