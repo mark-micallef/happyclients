@@ -17,4 +17,9 @@ public class BasicPlan extends Plan {
         return 500;
     }
 
+    @Override
+    public int getMaxSenderIDs() {
+        return 1;
+    }
+
 }

@@ -17,4 +17,10 @@ public class FreePlan extends Plan {
         return 50;
     }
 
+    @Override
+    public int getMaxSenderIDs() {
+        return 0;
+    }
+
+
 }

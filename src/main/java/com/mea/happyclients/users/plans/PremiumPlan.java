@@ -17,4 +17,9 @@ public class PremiumPlan extends Plan {
         return 1000;
     }
 
+    @Override
+    public int getMaxSenderIDs() {
+        return 5;
+    }
+
 }

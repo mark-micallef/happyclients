@@ -39,5 +39,6 @@ public abstract class Plan {
 
     public abstract int getPriceInEuroCents();
     public abstract int getNumSmsPerMonth();
+    public abstract int getMaxSenderIDs();
 
 }
