@@ -45,7 +45,7 @@ public class User {
         return senderID;
     }
 
-    public String setSenderID(String senderID) {
+    public void setSenderID(String senderID) {
         this.senderID = senderID;
     }
 
