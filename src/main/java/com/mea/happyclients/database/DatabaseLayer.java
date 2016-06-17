@@ -69,8 +69,8 @@ public class DatabaseLayer {
         if (errorList.isOk()) {
 
             String query = "INSERT INTO users\n" +
-                    "(`email`,`password`) \n VALUES \n" +
-                    "('" + email + "', '" + password + "');";
+                    "(`email`,`password`, `subscriptionDate`) \n VALUES \n" +
+                    "('" + email + "', '" + password + "', curdate());";
 
             int id = executeInsert(query);
 
