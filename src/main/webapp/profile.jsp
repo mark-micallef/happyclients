@@ -1,6 +1,7 @@
 <%@ page import="com.mea.happyclients.users.plans.Plan" %>
 <%@ page import="com.mea.happyclients.errors.ErrorList" %>
 <%@ page import="com.mea.happyclients.errors.Errors" %>
+<%@ page import="com.mea.happyclients.database.DatabaseLayer" %>
 <%@include file="header.jsp" %>
 
 <%
@@ -16,8 +17,10 @@
 
     //Process Form
     if (request.getParameter("submitted") != null) {
+        DatabaseLayer dbLayer = DatabaseLayer.getInstance();
         loggedUser.setName(request.getParameter("name"));
         loggedUser.setSenderID(request.getParameter("senderID"));
+        dbLayer.saveUser(loggedUser);
         errorList.addError(Errors.ERR_OK, "Your details have been updated.");
     }
 
