@@ -2,6 +2,7 @@ package com.mea.happyclients.users;
 
 import com.mea.happyclients.queues.FifoQueue;
 import com.mea.happyclients.queues.Queue;
+import com.mea.happyclients.users.plans.Plan;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class User {
     protected String name = null;
     protected String email = null;
     protected String senderID = null;
+    protected Plan plan = null;
     protected HashMap<String, Queue> queues;
 
     public User() {
@@ -41,6 +43,14 @@ public class User {
             senderID = "HappyClients";
         }
         return senderID;
+    }
+
+    public Plan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Plan plan) {
+        this.plan = plan;
     }
 
     public String getId() {

@@ -4,6 +4,7 @@ import com.mea.happyclients.errors.ErrorList;
 import com.mea.happyclients.errors.Errors;
 import com.mea.happyclients.infrastructure.Utils;
 import com.mea.happyclients.users.User;
+import com.mea.happyclients.users.plans.Plan;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
@@ -151,6 +152,7 @@ public class DatabaseLayer {
                 user.setEmail(rs.getString("email"));
                 user.setId(rs.getString("id"));
                 user.setName(rs.getString("name"));
+                user.setPlan(Plan.getPlanByName(rs.getString("plan")));
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -5,6 +5,10 @@
     if (loggedUser == null) {
         response.sendRedirect("login.jsp");
     }
+
+    String senderIDEnabled = "";
+    if (loggedUser.getPlan())
+
 %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -32,13 +36,17 @@
         <td>
             <select name="plan">
                 <% for (Plan plan : Plan.plans) { %>
-                <option value="<%= plan.getName() %>"><%= plan.toString() %></option>
+                <option value="<%= plan.getName() %>"
+                <% if (loggedUser.getPlan().getName().equalsIgnoreCase(plan.getName())) { %>
+                        selected
+                        <% } %>
+                ><%= plan.toString() %></option>
                 <% } %>
             </select>
         </td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td colspan="2" align="center">
             <input type="submit" value="Update Profile"/>
         </td>
     </tr>

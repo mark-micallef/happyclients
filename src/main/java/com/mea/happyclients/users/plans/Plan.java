@@ -16,6 +16,18 @@ public abstract class Plan {
 
     String name;
 
+    public static Plan getPlanByName(String name) {
+        Plan plan = null;
+
+        for (int i=0; i<plans.length && plan==null; i++) {
+            if (plans[i].getName().equalsIgnoreCase(name)) {
+                plan = plans[i];
+            }
+        }
+
+        return plan;
+    }
+
     public String getName() {
         return name;
     }
